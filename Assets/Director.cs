@@ -7,6 +7,7 @@ public class Director : MonoBehaviour
 	public Light directionalLight;
 	public GameObject player;
 	public GameObject gameOverOverlay;
+	public AudioService audioService;
 
 	public Text timer;
 
@@ -109,6 +110,8 @@ public class Director : MonoBehaviour
 
 		gameOverOverlay.SetActive(true);
 		_isGameOver = true;
+
+		audioService.Play(0, false);
 	}
 
 	void Update()
