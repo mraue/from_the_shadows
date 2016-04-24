@@ -91,8 +91,7 @@ public class Director : MonoBehaviour
 		{
 			return;
 		}
-
-		Debug.Log("GAME OVER");
+			
 		_isGameOver = true;
 
 		foreach (var monster in _monsters)		
@@ -135,7 +134,7 @@ public class Director : MonoBehaviour
 	void UpdateTimer()
 	{
 		_duration += Time.deltaTime;
-		timer.text = string.Format("{0:000.000}s", _duration);
+		timer.text = string.Format("{0:000.0000}", _duration);
 	}
 
 	void SpawnMonsters()
