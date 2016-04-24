@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
 		destroyedParticles.Stop();
 
-		gameObject.SetActive(false);
+//		gameObject.SetActive(false);
 	}
 
 	void Update()

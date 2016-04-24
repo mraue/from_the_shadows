@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 public class Monster : MonoBehaviour
 {
@@ -7,7 +8,28 @@ public class Monster : MonoBehaviour
 	public float speed = 1f;
 	public Action onGameOver;
 
-	public bool isActive = false;
+	public bool isActive;
+
+	public RandomAudioClipOnEnable audioPlayer;
+
+	public void ShutDown(float delay)
+	{
+		if (!isActive)
+		{
+			return;
+		}
+
+		isActive = false;
+		audioPlayer.Shutdown(delay);
+		StartCoroutine(ShutDownCoroutine(delay));
+	}
+
+	IEnumerator ShutDownCoroutine(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		yield return new WaitForEndOfFrame();
+		gameObject.SetActive(false);
+	}
 
 	void Update()
 	{

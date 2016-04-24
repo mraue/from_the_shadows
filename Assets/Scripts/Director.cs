@@ -47,7 +47,7 @@ public class Director : MonoBehaviour
 			var monster = (Instantiate(monsterPrefab) as GameObject).GetComponent<Monster>();
 			monster.player = player;
 			monster.onGameOver = OnGameOver;
-			monster.isActive = true;
+			monster.isActive = false;
 			monster.gameObject.SetActive(false);
 			_monsters.Enqueue(monster);
 		}
@@ -93,11 +93,11 @@ public class Director : MonoBehaviour
 		}
 
 		Debug.Log("GAME OVER");
+		_isGameOver = true;
 
-		foreach (var monster in _monsters)
-		{
-			monster.gameObject.SetActive(false);
-			monster.isActive = false;
+		foreach (var monster in _monsters)		
+		{			
+			monster.ShutDown(1f);
 		}
 
 		foreach (var column in _activeColumns)
@@ -109,7 +109,7 @@ public class Director : MonoBehaviour
 		_isActive = false;
 
 		gameOverOverlay.SetActive(true);
-		_isGameOver = true;
+
 
 		audioService.Play(0, false);
 	}
