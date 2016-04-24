@@ -134,7 +134,7 @@ public class Director : MonoBehaviour
 	void UpdateTimer()
 	{
 		_duration += Time.deltaTime;
-		timer.text = string.Format("{0:000.0000}", _duration);
+		timer.text = string.Format("{0:000.000}", _duration);
 	}
 
 	void SpawnMonsters()
